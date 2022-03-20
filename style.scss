@@ -1,0 +1,108 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'StratosSkyeng';
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'StratosSkyeng';
+    src: url(font/STRATOSSKYENG-REGULAR.OTF)/* TTF file for CSS3 browsers */
+}
+
+body {
+    background: #004980;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 40px;
+    line-height: 48px;
+    text-align: center;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #004980;
+}
+
+.center {
+    width: 100vw;
+    height: 100vh;
+}
+
+.main {
+    width: 480px;
+    height: 460px;
+    background: #C2F5FF;
+    border-radius: 12px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.main-title {
+    max-width: 208px;
+}
+
+.main-difficulty {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+
+.difficulty-select {
+    min-width: 98px;
+    min-height: 98px;
+    background-color: #fff;
+    border-radius: 12px;
+    border: 2px solid rgba(0, 0, 0, 0);
+}
+
+.difficulty-select:hover {
+    cursor: pointer;
+    border: 2px solid #004980;
+}
+
+.difficulty-select:hover,
+.start__button:hover,
+.difficulty__label {
+    cursor: pointer;
+}
+
+.difficulty__radio {
+    display: none;
+}
+
+.difficulty__label {
+    font-size: 64px;
+    line-height: 72px;
+    width: 100%;
+    height: 100%;
+    color: #0080C1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.start__button {
+    width: 246px;
+    height: 50px;
+    background: #7AC100;
+    border-radius: 12px;
+    border: 2px solid rgba(0, 0, 0, 0);
+    font-size: 24px;
+    line-height: 32px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #FFFFFF;
+}
+
+.start__button:hover {
+    border: 2px solid #5d9200;
+}
+
+.start__button:active {
+    transform: translate(0em, 0.15em);
+    background: #67a300;
+}
