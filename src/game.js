@@ -3,6 +3,9 @@ var sec = 0;
 var min = 0;
 // eslint-disable-next-line no-unused-vars
 var t;
+const menuRestart = document.querySelector('.interface-restart__button');
+const cards = document.querySelector('.gameField');
+const popupRestart = document.querySelector('.popup-content__button');
 
 function tick() {
     sec++;
@@ -33,15 +36,13 @@ function timerCicle() {
     sec = 0;
     min = 0;
 }
-const restart = document.querySelector('.interface-restart__button');
-restart.addEventListener('click', () => {
+menuRestart.addEventListener('click', () => {
     timerCicle();
+    window.location.href = 'index';
 });
-const cards = document.querySelector('.gameField');
 for (var i = 0; i < 36; i++) {
     cards.innerHTML += `<img src="pics/cards/shirt.png" class="card" alt="" /></img>`;
 }
-const popupRestart = document.querySelector('.popup-content__button');
 popupRestart.addEventListener('click', () => {
     // eslint-disable-next-line no-undef
     $('.popup').hide();

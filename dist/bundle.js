@@ -1,5 +1,9 @@
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
 const radio = document.querySelectorAll('.difficulty__radio');
-const start = document.querySelector('.start__button');
 radio.forEach((el) => {
     el.addEventListener('click', () => {
         radio.forEach((element) => {
@@ -9,10 +13,7 @@ radio.forEach((el) => {
         });
     });
 });
-start.addEventListener('click', () => {
-    radio.forEach((el) => {
-        if (el.checked) localStorage.setItem('diffLevel', el.id);
-    });
-    console.log(localStorage.getItem('diffLevel'));
-    window.location.href = 'game';
-});
+
+/******/ })()
+;
+//# sourceMappingURL=bundle.js.map
