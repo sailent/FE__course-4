@@ -2,18 +2,27 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const mode =
     process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
 module.exports = {
-    entry: './src/index.js',
+    entry: {
+        index: './src/index.js',
+        game: './src/game.js',
+    },
     mode,
     module: {
         rules: [
             {
-                test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+                test: /\.(sa|sc|c)ss$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader',
+                ],
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -22,6 +31,9 @@ module.exports = {
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
                 type: 'asset/resource',
+                generator: {
+                    filename: 'font/[hash][ext]',
+                },
             },
         ],
     },
@@ -31,7 +43,25 @@ module.exports = {
     devtool: process.env.NODE_ENV === 'production' ? false : 'source-map',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: '[name].js',
+        chunkFilename: '[id].[chunkhash].js',
     },
-    plugins: [new MiniCssExtractPlugin(), new HtmlWebpackPlugin()],
+    plugins: [
+        new MiniCssExtractPlugin({ filename: '[name].css' }),
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: 'src/index.html',
+            chunks: ['index'],
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'game.html',
+            template: 'src/game.html',
+            chunks: ['game'],
+        }),
+        new CopyPlugin({
+            patterns: [
+                { from: path.resolve(__dirname, 'src/pics/'), to: 'pics' },
+            ],
+        }),
+    ],
 };

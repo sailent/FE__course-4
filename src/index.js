@@ -1,3 +1,4 @@
+import './style.css';
 const radio = document.querySelectorAll('.difficulty__radio');
 const start = document.querySelector('.start__button');
 radio.forEach((el) => {
@@ -10,9 +11,14 @@ radio.forEach((el) => {
     });
 });
 start.addEventListener('click', () => {
+    var isDiffChosen = false;
     radio.forEach((el) => {
-        if (el.checked) localStorage.setItem('diffLevel', el.id);
+        if (el.checked) {
+            localStorage.setItem('diffLevel', el.id);
+            isDiffChosen = true;
+        }
     });
-    console.log(localStorage.getItem('diffLevel'));
-    window.location.href = 'game';
+    isDiffChosen === false
+        ? alert('Выбери сложность')
+        : (window.location.href = 'game.html');
 });

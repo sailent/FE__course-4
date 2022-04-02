@@ -1,11 +1,12 @@
+import './style.css';
+const menuRestart = document.querySelector('.interface-restart__button');
+const gameField = document.querySelector('.gameField');
+const popupBlock = document.querySelector('.popup');
+const popupRestart = document.querySelector('.popup-content__button');
 const time = document.getElementsByTagName('time')[0];
 var sec = 0;
 var min = 0;
-// eslint-disable-next-line no-unused-vars
 var t;
-const menuRestart = document.querySelector('.interface-restart__button');
-const cards = document.querySelector('.gameField');
-const popupRestart = document.querySelector('.popup-content__button');
 
 function tick() {
     sec++;
@@ -26,7 +27,6 @@ function add() {
 function timer() {
     t = setTimeout(add, 1000);
 }
-document.addEventListener('DOMContentLoaded', timer());
 // остановить таймер
 //  function () {
 //     clearTimeout(t);
@@ -36,15 +36,16 @@ function timerCicle() {
     sec = 0;
     min = 0;
 }
+
+document.addEventListener('DOMContentLoaded', timer());
 menuRestart.addEventListener('click', () => {
     timerCicle();
-    window.location.href = 'index';
+    window.location.href = 'index.html';
 });
 for (var i = 0; i < 36; i++) {
-    cards.innerHTML += `<img src="pics/cards/shirt.png" class="card" alt="" /></img>`;
+    gameField.innerHTML += `<img src="pics/cards/shirt.png" class="card" alt="" /></img>`;
 }
 popupRestart.addEventListener('click', () => {
-    // eslint-disable-next-line no-undef
-    $('.popup').hide();
+    popupBlock.setAttribute('style', 'display: none');
     timerCicle();
 });
