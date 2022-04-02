@@ -1,4 +1,3 @@
-import './style.css';
 const radio = document.querySelectorAll('.difficulty__radio');
 const start = document.querySelector('.start__button');
 radio.forEach((el) => {
