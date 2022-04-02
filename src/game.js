@@ -1,4 +1,3 @@
-import './style.css';
 const menuRestart = document.querySelector('.interface-restart__button');
 const gameField = document.querySelector('.gameField');
 const popupBlock = document.querySelector('.popup');
@@ -6,6 +5,7 @@ const popupRestart = document.querySelector('.popup-content__button');
 const time = document.getElementsByTagName('time')[0];
 var sec = 0;
 var min = 0;
+// eslint-disable-next-line no-unused-vars
 var t;
 
 function tick() {

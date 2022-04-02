@@ -47,7 +47,7 @@ module.exports = {
         chunkFilename: '[id].[chunkhash].js',
     },
     plugins: [
-        new MiniCssExtractPlugin({ filename: '[name].css' }),
+        new MiniCssExtractPlugin({ filename: 'style.css' }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'src/index.html',
