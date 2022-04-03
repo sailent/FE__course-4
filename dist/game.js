@@ -1,3 +1,8 @@
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!*********************!*\
+  !*** ./src/game.js ***!
+  \*********************/
 const menuRestart = document.querySelector('.interface-restart__button');
 const gameField = document.querySelector('.gameField');
 const popupBlock = document.querySelector('.popup');
@@ -49,3 +54,7 @@ popupRestart.addEventListener('click', () => {
     popupBlock.setAttribute('style', 'display: none');
     timerCicle();
 });
+
+/******/ })()
+;
+//# sourceMappingURL=game.js.map

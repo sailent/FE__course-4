@@ -1,3 +1,8 @@
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
 const radio = document.querySelectorAll('.difficulty__radio');
 const start = document.querySelector('.start__button');
 radio.forEach((el) => {
@@ -21,3 +26,7 @@ start.addEventListener('click', () => {
         ? alert('Выбери сложность')
         : (window.location.href = 'game.html');
 });
+
+/******/ })()
+;
+//# sourceMappingURL=index.js.map
