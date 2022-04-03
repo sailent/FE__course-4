@@ -9,12 +9,17 @@ const mode =
 
 module.exports = {
     entry: {
-        index: './src/index.js',
-        game: './src/game.js',
+        index: './src/index.ts',
+        game: './src/game.ts',
     },
     mode,
     module: {
         rules: [
+            {
+                test: /\.ts$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
             {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
@@ -36,6 +41,9 @@ module.exports = {
                 },
             },
         ],
+    },
+    resolve: {
+        extensions: ['.ts', '.js'],
     },
     optimization: {
         minimizer: ['...', new CssMinimizerPlugin()],

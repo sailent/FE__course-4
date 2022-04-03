@@ -196,7 +196,7 @@ h3 {
     line-height: 32px;
     font-feature-settings: 'pnum' on, 'lnum' on;
 }
-.spent_time {
+.spentTime {
     @extend time;
     color: black !important;
 }
