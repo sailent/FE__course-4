@@ -157,7 +157,7 @@ section {
   margin-bottom: 24px;
 }
 
-time, .spent_time {
+time, .spentTime {
   font-size: 64px;
   line-height: 72px;
   color: white;
@@ -282,7 +282,7 @@ h3 {
           font-feature-settings: 'pnum' on, 'lnum' on;
 }
 
-.spent_time {
+.spentTime {
   color: black !important;
 }
 /*# sourceMappingURL=style.css.map */

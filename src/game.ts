@@ -13,13 +13,13 @@ const ArrCardIndex = [
     'дама',
     'король',
     'туз',
-];
-const ArrCardSuits = ['бубны', 'крести', 'пики', 'черви'];
-var sec = 0;
-var min = 0;
+] as const;
+const ArrCardSuits = ['бубны', 'крести', 'пики', 'черви'] as const;
+var sec: number = 0;
+var min: number = 0;
 // eslint-disable-next-line no-unused-vars
-var t;
-function getRandomInt(max) {
+var t: any;
+function getRandomInt(max: number) {
     return Math.floor(Math.random() * max);
 }
 function tick() {
@@ -48,23 +48,23 @@ function timerCicle() {
 }
 function generateCards() {
     gameField.innerHTML = '';
-    const diffLevel = localStorage.getItem('diffLevel');
-    var cardCount = 0;
+    const diffLevel = localStorage.getItem('diffLevel') as string;
+    var cardCount: number = 0;
     if (!localStorage.getItem('diffLevel')) window.location.href = 'index.html';
     if (diffLevel === 'hard') cardCount = 36;
     else diffLevel === 'normal' ? (cardCount = 18) : (cardCount = 10);
-    for (var i = 0; i < cardCount; i++) {
+    for (var i: number = 0; i < cardCount; i++) {
         gameField.innerHTML += `<img src="pics/cards/shirt.png" id='${i}' class="card" alt="shirt" /></img>`;
     }
 }
 function hideCards() {
-    for (var i = 0; i < cards.length; i++) {
+    for (var i: number = 0; i < cards.length; i++) {
         document
             .getElementById(`${i}`)
             .setAttribute('src', `pics/cards/shirt.png`);
     }
 }
-function setCopyOfCard(el, idCard, idSuit) {
+function setCopyOfCard(el: Element, idCard: number, idSuit: number): void {
     el = document.getElementById(`${getRandomInt(cards.length)}`);
     if (el.getAttribute('alt') !== 'shirt')
         return setCopyOfCard(el, idCard, idSuit);
@@ -80,11 +80,11 @@ function setCopyOfCard(el, idCard, idSuit) {
     }
 }
 function shuffleCards() {
-    for (var i = 0; i < cards.length; i++) {
-        var temp = document.getElementById(`${i}`);
+    for (var i: number = 0; i < cards.length; i++) {
+        var temp = document.getElementById(`${i}`) as HTMLElement;
         if (temp.getAttribute('alt') === 'shirt') {
-            var cardIndex = getRandomInt(9);
-            var cardSuit = getRandomInt(4);
+            var cardIndex: number = getRandomInt(9);
+            var cardSuit: number = getRandomInt(4);
             temp.setAttribute(
                 'src',
                 `/pics/cards/${ArrCardIndex[cardIndex]} ${ArrCardSuits[cardSuit]}.png`
@@ -97,13 +97,10 @@ function shuffleCards() {
         }
     }
 }
-document.addEventListener(
-    'DOMContentLoaded',
-    generateCards(),
+generateCards(),
     sessionStorage.removeItem('buffer1'),
-    sessionStorage.removeItem('buffer2')
-);
-var cards = document.querySelectorAll('.card');
+    sessionStorage.removeItem('buffer2');
+var cards = document.querySelectorAll('.card') as NodeListOf<Element>;
 shuffleCards(),
     setTimeout(timer, 5000),
     setTimeout(hideCards, 5000),
@@ -113,7 +110,7 @@ menuRestart.addEventListener('click', () => {
     window.location.href = 'index.html';
 });
 popupRestart.addEventListener('click', () => {
-    popupBlock.style.display = 'none';
+    popupBlock.setAttribute('style', 'display=none');
     sessionStorage.removeItem('buffer1');
     sessionStorage.removeItem('buffer2');
     timerCicle();
@@ -125,7 +122,7 @@ popupRestart.addEventListener('click', () => {
         setTimeout(gameplayLogic, 5000);
 });
 function gameplayLogic() {
-    var ArrDisabledCards = [];
+    var ArrDisabledCards: string[] = [];
     cards = document.querySelectorAll('.card');
     cards.forEach((element) => {
         element.addEventListener('click', () => {
@@ -162,7 +159,9 @@ function gameplayLogic() {
                     );
                     if (ArrDisabledCards.length === cards.length) {
                         clearTimeout(t);
-                        document.querySelector('.popup').style.display = 'flex';
+                        document
+                            .querySelector('.popup')
+                            .setAttribute('style', 'display: flex;');
                         document.querySelector('.spentTime').textContent =
                             document.querySelector('.timerValue').textContent;
                     }
@@ -171,7 +170,9 @@ function gameplayLogic() {
                     element.getAttribute('alt')
                 ) {
                     clearTimeout(t);
-                    document.querySelector('.popup').style.display = 'flex';
+                    document
+                        .querySelector('.popup')
+                        .setAttribute('style', 'display: flex;');
                     document.querySelector('.result__title').textContent =
                         'Вы проиграли';
                     document
